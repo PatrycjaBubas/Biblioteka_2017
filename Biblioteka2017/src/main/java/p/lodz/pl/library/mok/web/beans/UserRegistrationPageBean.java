@@ -36,6 +36,6 @@ public class UserRegistrationPageBean implements Serializable {
     public String registerUser() {
         user.setIdRole(2);
         userSession.registerUser(user);
-        return "succesAfterRegister";
+        return "successAfterRegister";
     }
 }

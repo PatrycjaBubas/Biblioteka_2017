@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="./templates/mainTemplate.xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="top">
+        <p>Rejestracja konta</p>
+    </ui:define>
+
+    <ui:define name="left">
+<!--        <ui:include src="/templates/menu.xhtml" />-->
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <h:panelGrid id="matchGrid" columns="3" cellpadding="5">
+
+                <h:outputLabel for="inputLogin" value="Login: *" />
+                <p:inputText id="inputLogin" value="#{userRegistrationPageBean.user.login}" required="true">
+                    <f:validateLength for="inputLogin" maximum="20" minimum="1" />
+                    <f:validateRegex for="inputLogin" pattern="[a-zA-Z0-9]+" />            
+                </p:inputText>
+                <p:message for="inputLogin" display="text" />
+
+                <h:outputLabel for="inputEmail" value="E-Mail: *" />
+                <p:inputText id="inputEmail" value="#{userRegistrationPageBean.user.email}" required="true">
+<!--                    <f:validateLength for="inputEmail" maximum="20" minimum="1" />
+                    <f:validateRegex for="inputEmail" pattern="[a-zA-Z0-9]+" />            -->
+                </p:inputText>
+                <p:message for="inputLogin" display="text" />
+
+                <h:outputLabel for="inputName" value="Imię: *" />
+                <p:inputText id="inputName" value="#{userRegistrationPageBean.user.name}" required="true">
+                    <f:validateLength for="inputName" maximum="25" minimum="1" />
+                    <f:validateRegex for="inputName" pattern="[a-zA-Z]+" />               
+                </p:inputText>
+                <p:message for="inputName" display="text" />
+
+                <h:outputLabel for="inputSurname" value="Nazwisko: *" />
+                <p:inputText id="inputSurname" value="#{userRegistrationPageBean.user.surname}" required="true">
+                    <f:validateLength for="inputSurname" maximum="40" minimum="1" />
+                    <f:validateRegex for="inputSurname" pattern="[a-zA-Z]+" />              
+                </p:inputText>
+                <p:message for="inputSurname" display="text" />
+
+                <h:outputLabel for="pwd1" value="Hasło: *" style="font-size: 12px"  />
+                <p:password id="pwd1" value="#{userRegistrationPageBean.user.password}" required="true">
+                    <f:validateLength for="pwd1" maximum="32" minimum="6" />
+                    <f:validateRegex pattern="[a-zA-Z0-9]+"/>
+                </p:password>
+
+            </h:panelGrid>
+
+            <p:commandButton update="matchGrid" action="#{userRegistrationPageBean.registerUser()}" value="Zarejestruj" />
+            <p:commandButton value="Powrót" action="home" immediate="true" />
+        </h:form>
+        <p:messages autoUpdate="true" class="error"/>
+    </ui:define>
+
+    <ui:define name="footer">
+<!--        <ui:include src="/templates/footer.xhtml" />-->
+    </ui:define>
+</ui:composition>
