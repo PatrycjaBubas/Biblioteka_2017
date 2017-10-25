@@ -11,6 +11,8 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import p.lodz.pl.library.entities.Users;
 import p.lodz.pl.library.facades.UsersFacadeLocal;
+import p.lodz.pl.library.managers.UserRegistrationManager;
+import p.lodz.pl.library.managers.UserRegistrationManagerLocal;
 
 /**
  *
@@ -23,8 +25,12 @@ public class MOKEndpoint implements MOKEndpointLocal {
     @EJB
     private UsersFacadeLocal usersFacade;
     
+    @EJB
+    private UserRegistrationManagerLocal userRegistrationManager;
+    
     @Override
     public void registerAccount(Users user) {
+        Users userToRegister = userRegistrationManager.prepareUserAccountToRegister(user);
         usersFacade.create(user);
     }
     

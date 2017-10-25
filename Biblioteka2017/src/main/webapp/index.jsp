@@ -35,5 +35,8 @@
             </tr>
         </c:forEach>
     </table>
+            
+            <a href="/Biblioteka2017/login/login.xhtml">Logowanie</a>
+            <a href="/Biblioteka2017/registerAccount.xhtml">Rejestracja</a>
     </body>
 </html>
