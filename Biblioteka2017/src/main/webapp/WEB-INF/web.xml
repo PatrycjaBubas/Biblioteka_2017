@@ -26,8 +26,8 @@
     </resource-ref>
     <!--    kontrola dostepu dla stron logowania-->
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
+   <!--     <welcome-file>index.jsp</welcome-file>c-->
     </welcome-file-list>
     <security-constraint>
         <display-name>LoginConstr</display-name>

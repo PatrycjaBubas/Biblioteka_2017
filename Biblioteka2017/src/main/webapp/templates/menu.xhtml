@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form>
+        <ul>   
+            <li><h:commandLink value="Strona główna" action="home" /></li>
+            <h:panelGroup rendered="#{!roleUtils.accountIsAuthorised()}">
+                <li><h:commandLink value="Zaloguj" action="login" /><br /></li>
+                <li><h:commandLink value="Rejestracja" action="registerAccount"/><br /></li>
+            </h:panelGroup>
+
+            <h:panelGroup rendered="#{roleUtils.accountIsAuthorised()}" >
+                <li><h:commandLink value="Lista książek" action="bookList" /></li><br/>
+            </h:panelGroup>
+
+            <h:panelGroup rendered="#{roleUtils.accountIsAdministrator()}">
+                <p:outputLabel value="Administrator"/>
+                <li><h:commandLink  value="Lista kont" action="accountsList" /></li>
+                <li><h:commandLink  value="Lista gatunków" action="genreList" /></li>
+                <li><h:commandLink  value="Lista autorów" action="writerList" /></li>
+                <li><h:commandLink  value="Dodaj gatunek" action="addGenre" /></li>
+                <li><h:commandLink  value="Dodaj autora" action="addWriter" /></li>
+                <li><h:commandLink  value="Dodaj książkę" action="addBook" /></li><br/>
+            </h:panelGroup>
+
+            <h:panelGroup rendered="#{roleUtils.accountIsReader()}" >
+                <p:outputLabel value="Czytelnik" />
+                <li><h:commandLink value="Lista wypożyczeń" action="requestsList" /></li>                
+            </h:panelGroup>
+        </ul>
+    </h:form>
+</ui:composition>
