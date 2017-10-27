@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <div>
+        <h:form>
+            Biblioteka.
+            <br/>
+            <strong>
+                Zalogowano jako: 
+                <c:if test="#{roleUtils.accountIsAdministrator() == true}">
+                    <span style="text-decoration:underline;">#{txt.admin}</span>       
+                </c:if>
+                <c:if test="#{roleUtils.accountIsReader() == true}">
+                    <span style="text-decoration:underline;">#{txt.reader}</span>       
+                </c:if>
+            </strong>
+        </h:form>
+    </div>
+</ui:composition>

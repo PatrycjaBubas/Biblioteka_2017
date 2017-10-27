@@ -17,37 +17,37 @@
 
     <ui:define name="content">
         <h:form>
-            <h:panelGrid id="matchGrid" columns="3" cellpadding="5">
+            <h:panelGrid id="matchGrid" columns="3" cellpadding="5" >
 
-                <h:outputLabel for="inputLogin" value="Login: *" />
+                <h:outputLabel for="inputLogin" value="Login: *" style="font-size: 16px"/>
                 <p:inputText id="inputLogin" value="#{userRegistrationPageBean.user.login}" required="true">
                     <f:validateLength for="inputLogin" maximum="20" minimum="1" />
                     <f:validateRegex for="inputLogin" pattern="[a-zA-Z0-9]+" />            
                 </p:inputText>
                 <p:message for="inputLogin" display="text" />
 
-                <h:outputLabel for="inputEmail" value="E-Mail: *" />
+                <h:outputLabel for="inputEmail" value="E-Mail: *" style="font-size: 16px"/>
                 <p:inputText id="inputEmail" value="#{userRegistrationPageBean.user.email}" required="true">
 <!--                    <f:validateLength for="inputEmail" maximum="20" minimum="1" />
                     <f:validateRegex for="inputEmail" pattern="[a-zA-Z0-9]+" />            -->
                 </p:inputText>
                 <p:message for="inputLogin" display="text" />
 
-                <h:outputLabel for="inputName" value="Imię: *" />
+                <h:outputLabel for="inputName" value="Imię: *" style="font-size: 16px"/>
                 <p:inputText id="inputName" value="#{userRegistrationPageBean.user.name}" required="true">
                     <f:validateLength for="inputName" maximum="25" minimum="1" />
                     <f:validateRegex for="inputName" pattern="[a-zA-Z]+" />               
                 </p:inputText>
                 <p:message for="inputName" display="text" />
 
-                <h:outputLabel for="inputSurname" value="Nazwisko: *" />
+                <h:outputLabel for="inputSurname" value="Nazwisko: *" style="font-size: 16px"/>
                 <p:inputText id="inputSurname" value="#{userRegistrationPageBean.user.surname}" required="true">
                     <f:validateLength for="inputSurname" maximum="40" minimum="1" />
                     <f:validateRegex for="inputSurname" pattern="[a-zA-Z]+" />              
                 </p:inputText>
                 <p:message for="inputSurname" display="text" />
 
-                <h:outputLabel for="pwd1" value="Hasło: *" style="font-size: 12px"  />
+                <h:outputLabel for="pwd1" value="Hasło: *" style="font-size: 16px"  />
                 <p:password id="pwd1" value="#{userRegistrationPageBean.user.password}" required="true">
                     <f:validateLength for="pwd1" maximum="32" minimum="6" />
                     <f:validateRegex pattern="[a-zA-Z0-9]+"/>
