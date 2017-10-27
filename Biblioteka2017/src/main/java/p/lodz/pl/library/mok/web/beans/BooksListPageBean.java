@@ -12,7 +12,10 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import p.lodz.pl.library.entities.Books;
+import p.lodz.pl.library.facades.AuthorsFacadeLocal;
 import p.lodz.pl.library.facades.BooksFacadeLocal;
+import p.lodz.pl.library.facades.CategoriesFacadeLocal;
+import p.lodz.pl.library.models.BookModel;
 
 /**
  *
@@ -24,6 +27,12 @@ public class BooksListPageBean implements Serializable{
 
     @EJB
     private BooksFacadeLocal booksFacade;
+    
+    @EJB
+    private AuthorsFacadeLocal authorsFacade;
+    
+    @EJB
+    private CategoriesFacadeLocal categoriesFacade;
 
     /**
      * Creates a new instance of BooksListPageBean
@@ -31,12 +40,18 @@ public class BooksListPageBean implements Serializable{
     public BooksListPageBean() {
     }
     
-    public List<Books> getBooks(){
+    public List<BookModel> getResulBooksList(){
         
+        List<BookModel> resulBooksList = new ArrayList<BookModel>();
         List<Books> books = new ArrayList<Books>();
         books = booksFacade.findAll();
         
-        return books;
+        for(Books b : books)
+        {
+            resulBooksList.add(new BookModel(authorsFacade.find(b.getIdAuthors()).getName() + " " + authorsFacade.find(b.getIdAuthors()).getSurname(), categoriesFacade.find(b.getIdCategories()).getName(),b));   
+        }
+        
+        return resulBooksList;
         
     }
     

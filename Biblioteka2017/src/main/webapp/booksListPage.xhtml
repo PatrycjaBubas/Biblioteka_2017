@@ -8,18 +8,26 @@
     </h:head>
     <h:body>
 	<h2>Books</h2>
-	<h:dataTable value="#{booksListPageBean.books}" var="book" border="1">
+	<h:dataTable value="#{booksListPageBean.resulBooksList}" var="resulBook" border="1">
 		<h:column>
                     <f:facet name="header">Tytuł</f:facet>
-                    #{book.title}
+                    #{resulBook.book.title}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Autor</f:facet>
+                    #{resulBook.authorName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Kategoria</f:facet>
+                    #{resulBook.cathegory}
                 </h:column>
 		<h:column>
                     <f:facet name="header">ISBN</f:facet>
-                    #{book.isbn}
+                    #{resulBook.book.isbn}
                 </h:column>
 		<h:column>
                     <f:facet name="header">Data</f:facet>
-                    #{book.request.date}
+                    #{resulBook.book.date}
                 </h:column>
 	</h:dataTable>
     </h:body>

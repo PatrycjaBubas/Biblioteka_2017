@@ -5,45 +5,45 @@
  */
 package p.lodz.pl.library.models;
 
-import java.awt.print.Book;
 import java.io.Serializable;
+import p.lodz.pl.library.entities.Books;
 
 /**
  *
  * @author nero1
  */
 public class BookModel  implements Serializable {
-    private String authotName;
-    private String Cathegory;
-    private Book book;
+    private String authorName;
+    private String cathegory;
+    private Books book;
 
-    public BookModel(String authotName, String Cathegory, Book book) {
-        this.authotName = authotName;
-        this.Cathegory = Cathegory;
+    public BookModel(String authotName, String Cathegory, Books book) {
+        this.authorName = authotName;
+        this.cathegory = Cathegory;
         this.book = book;
     }
 
-    public String getAuthotName() {
-        return authotName;
+    public String getAuthorName() {
+        return authorName;
     }
 
-    public void setAuthotName(String authotName) {
-        this.authotName = authotName;
+    public void setAuthorName(String authotName) {
+        this.authorName = authotName;
     }
 
     public String getCathegory() {
-        return Cathegory;
+        return cathegory;
     }
 
     public void setCathegory(String Cathegory) {
-        this.Cathegory = Cathegory;
+        this.cathegory = Cathegory;
     }
 
-    public Book getBook() {
+    public Books getBook() {
         return book;
     }
 
-    public void setBook(Book book) {
+    public void setBook(Books book) {
         this.book = book;
     }
     
