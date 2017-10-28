@@ -53,7 +53,7 @@ public class BorrowedBooksListPageBean implements Serializable {
         
         for(Requests r : requests)
         {
-            borrowedBooks.add(new BorrowedBookModel(usersFacade.find(r.getIdUsers()).getName() + " " + usersFacade.find(r.getIdUsers()).getSurname(), booksFacade.find(r.getIdUsers()).getTitle(),r));   
+            borrowedBooks.add(new BorrowedBookModel(usersFacade.find(r.getIdUsers()).getName() + " " + usersFacade.find(r.getIdUsers()).getSurname(), booksFacade.find(r.getIdBooks()).getTitle(),r));   
         }
         
         return borrowedBooks;
