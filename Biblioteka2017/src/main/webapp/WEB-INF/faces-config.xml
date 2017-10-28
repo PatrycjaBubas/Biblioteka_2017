@@ -35,7 +35,14 @@
     <navigation-rule>
         <navigation-case>
             <from-outcome>bookList</from-outcome>
-            <to-view-id>/Lists/bookList.xhtml</to-view-id>
+            <to-view-id>/lists/bookList.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>requestsList</from-outcome>
+            <to-view-id>/lists/borrowedBookList.xhtml</to-view-id>
             <redirect />
         </navigation-case>
     </navigation-rule>
