@@ -14,11 +14,13 @@
                 <li><h:commandLink value="Rejestracja" action="registerAccount"/><br /></li>
             </h:panelGroup>
 
-            <h:panelGroup rendered="#{roleUtils.accountIsAuthorised()}" >
+            <!--<h:panelGroup rendered="#{roleUtils.accountIsAuthorised()}" >-->
+            <h:panelGroup>
                 <li><h:commandLink value="Lista książek" action="bookList" /></li><br/>
             </h:panelGroup>
 
-            <h:panelGroup rendered="#{roleUtils.accountIsAdministrator()}">
+            <!--<h:panelGroup rendered="#{roleUtils.accountIsAdministrator()}">-->
+            <h:panelGroup>
                 <p:outputLabel value="Administrator"/>
                 <li><h:commandLink  value="Lista kont" action="accountsList" /></li>
                 <li><h:commandLink  value="Lista gatunków" action="genreList" /></li>
@@ -28,7 +30,8 @@
                 <li><h:commandLink  value="Dodaj książkę" action="addBook" /></li><br/>
             </h:panelGroup>
 
-            <h:panelGroup rendered="#{roleUtils.accountIsReader()}" >
+            <!--<h:panelGroup rendered="#{roleUtils.accountIsReader()}" >-->
+            <h:panelGroup>
                 <p:outputLabel value="Czytelnik" />
                 <li><h:commandLink value="Lista wypożyczeń" action="requestsList" /></li>                
             </h:panelGroup>

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/templates/mainTemplate.xhtml">
+
+    <ui:define name="top">
+        <p>Strona główna / Lista książek</p>
+        <ui:include src="/templates/header.xhtml" /> 
+    </ui:define>
+
+    <ui:define name="left">
+        <ui:include src="/templates/menu.xhtml" />
+    </ui:define>
+
+
+    <ui:define name="content">
+        <h:form id="dataTableForm">
+           <p:dataTable var="resulBook" value="#{booksListPageBean.resulBooksList}" widgetVar="booksTable">
+               
+               <p:column  headerText="Tytuł"  style="text-align: center" >
+                    <h:outputText value="#{resulBook.book.title}" />
+               </p:column>
+               
+               <p:column  headerText="Autor"  style="text-align: center" >
+                    <h:outputText value="#{resulBook.authorName}" />
+                    <!--&nbsp;
+                    <h:outputText value="#{book.idWriter.surname}" />-->
+               </p:column>
+               
+               <p:column   headerText="ISBN"  style="text-align: center" >
+                   <h:outputText value="#{resulBook.book.isbn}" />
+               </p:column>
+               
+               <p:column  headerText="Gatunek"  style="text-align: center" >
+                    <h:outputText value="#{resulBook.cathegory}" />
+               </p:column>
+               
+               <p:column  headerText="Data"  style="text-align: center" >
+                    <h:outputText value="#{resulBook.book.date}" />
+               </p:column>
+           
+               <!--<p:column id="actions" headerText="Akcje" style="text-align: center" >
+                   <p:commandButton action="#{bookListPageBean.viewCopyList()}" value="#{txt.showcopies}" />
+               </p:column>-->
+           
+           </p:dataTable>
+            
+        </h:form>
+    </ui:define>
+
+    <ui:define name="footer">
+        <ui:include src="/templates/footer.xhtml" />
+    </ui:define>
+</ui:composition>
