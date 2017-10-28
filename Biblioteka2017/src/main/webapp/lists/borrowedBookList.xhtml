@@ -20,21 +20,26 @@
 
     <ui:define name="content">
         <h:form id="dataTableForm">
-           <p:dataTable  widgetVar="booksTable">
+           <p:dataTable var="borrowedBook" value="#{borrowedBooksListPageBean.borrowedBooks}" widgetVar="booksTable">
                
                <p:column  headerText="Czytelik"  style="text-align: center" >
+                   <h:outputText value="#{borrowedBook.userName}" />
                </p:column>
                
                <p:column  headerText="Tytuł"  style="text-align: center" >
+                   <h:outputText value="#{borrowedBook.bookTitle}" />
                </p:column>
                              
                <p:column  headerText="Data wypożyczenia"  style="text-align: center" >
+                   <h:outputText value="#{borrowedBook.request.borrowDate}" />
                </p:column>
                
                <p:column  headerText="Data zwrotu"  style="text-align: center" >
+                   <h:outputText value="#{borrowedBook.request.returnDate}" />
                </p:column>
                
                <p:column  headerText="Czy zwrócono"  style="text-align: center" >
+                   <h:outputText value="#{borrowedBook.returned}" />
                </p:column>           
            </p:dataTable>
             
