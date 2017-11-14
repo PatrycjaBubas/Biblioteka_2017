@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -49,12 +51,14 @@ public class Books implements Serializable {
     
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idAuthors")
+    @JoinColumn(name = "idAuthors", referencedColumnName = "idAuthors")
+    @ManyToOne(optional = false)
     private int idAuthors;
     
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idCategories")
+    @JoinColumn(name = "idCategories", referencedColumnName = "idCategories")
+    @ManyToOne(optional = false)
     private int idCategories;
     
     @Basic(optional = false)
