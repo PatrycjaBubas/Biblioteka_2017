@@ -6,7 +6,10 @@
 package p.lodz.pl.library.entities;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,25 +19,30 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Paweł Cała
+ * @author Lopez
  */
 @Entity
 @Table(name = "books")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Books.findAll", query = "SELECT b FROM Books b"),
     @NamedQuery(name = "Books.findByIdBooks", query = "SELECT b FROM Books b WHERE b.idBooks = :idBooks"),
     @NamedQuery(name = "Books.findByTitle", query = "SELECT b FROM Books b WHERE b.title = :title"),
-    @NamedQuery(name = "Books.findByIdAuthors", query = "SELECT b FROM Books b WHERE b.idAuthors = :idAuthors"),
-    @NamedQuery(name = "Books.findByIdCategories", query = "SELECT b FROM Books b WHERE b.idCategories = :idCategories"),
     @NamedQuery(name = "Books.findByIsbn", query = "SELECT b FROM Books b WHERE b.isbn = :isbn"),
     @NamedQuery(name = "Books.findByDate", query = "SELECT b FROM Books b WHERE b.date = :date")})
 public class Books implements Serializable {
+   
     private static final long serialVersionUID = 1L;
     
     @Id
@@ -51,18 +59,6 @@ public class Books implements Serializable {
     
     @Basic(optional = false)
     @NotNull
-    @JoinColumn(name = "idAuthors", referencedColumnName = "idAuthors")
-    @ManyToOne(optional = false)
-    private int idAuthors;
-    
-    @Basic(optional = false)
-    @NotNull
-    @JoinColumn(name = "idCategories", referencedColumnName = "idCategories")
-    @ManyToOne(optional = false)
-    private int idCategories;
-    
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "isbn")
     private String isbn;
@@ -70,7 +66,19 @@ public class Books implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "date")
-    private int date;
+    @Temporal(TemporalType.DATE)
+    private Date date;
+    
+    @JoinColumn(name = "idCategories", referencedColumnName = "idCategories")
+    @ManyToOne(optional = false)
+    private Categories idCategories;
+    
+    @JoinColumn(name = "idAuthors", referencedColumnName = "idAuthors")
+    @ManyToOne(optional = false)
+    private Authors idAuthors;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBooks")
+    private List<Requests> requestsList;
 
     public Books() {
     }
@@ -79,11 +87,9 @@ public class Books implements Serializable {
         this.idBooks = idBooks;
     }
 
-    public Books(Integer idBooks, String title, int idAuthors, int idCategories, String isbn, int date) {
+    public Books(Integer idBooks, String title, String isbn, Date date) {
         this.idBooks = idBooks;
         this.title = title;
-        this.idAuthors = idAuthors;
-        this.idCategories = idCategories;
         this.isbn = isbn;
         this.date = date;
     }
@@ -104,22 +110,6 @@ public class Books implements Serializable {
         this.title = title;
     }
 
-    public int getIdAuthors() {
-        return idAuthors;
-    }
-
-    public void setIdAuthors(int idAuthors) {
-        this.idAuthors = idAuthors;
-    }
-
-    public int getIdCategories() {
-        return idCategories;
-    }
-
-    public void setIdCategories(int idCategories) {
-        this.idCategories = idCategories;
-    }
-
     public String getIsbn() {
         return isbn;
     }
@@ -128,12 +118,37 @@ public class Books implements Serializable {
         this.isbn = isbn;
     }
 
-    public int getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Categories getIdCategories() {
+        return idCategories;
+    }
+
+    public void setIdCategories(Categories idCategories) {
+        this.idCategories = idCategories;
+    }
+
+    public Authors getIdAuthors() {
+        return idAuthors;
+    }
+
+    public void setIdAuthors(Authors idAuthors) {
+        this.idAuthors = idAuthors;
+    }
+
+    @XmlTransient
+    public List<Requests> getRequestsList() {
+        return requestsList;
+    }
+
+    public void setRequestsList(List<Requests> requestsList) {
+        this.requestsList = requestsList;
     }
 
     @Override

@@ -6,7 +6,9 @@
 package p.lodz.pl.library.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,22 +16,27 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Paweł Cała
+ * @author Lopez
  */
 @Entity
 @Table(name = "categories")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Categories.findAll", query = "SELECT c FROM Categories c"),
     @NamedQuery(name = "Categories.findByIdCategories", query = "SELECT c FROM Categories c WHERE c.idCategories = :idCategories"),
     @NamedQuery(name = "Categories.findByName", query = "SELECT c FROM Categories c WHERE c.name = :name"),
     @NamedQuery(name = "Categories.findByDescription", query = "SELECT c FROM Categories c WHERE c.description = :description")})
 public class Categories implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     
     @Id
@@ -49,6 +56,9 @@ public class Categories implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "description")
     private String description;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategories")
+    private List<Books> booksList;
 
     public Categories() {
     }
@@ -87,6 +97,15 @@ public class Categories implements Serializable {
         this.description = description;
     }
 
+    @XmlTransient
+    public List<Books> getBooksList() {
+        return booksList;
+    }
+
+    public void setBooksList(List<Books> booksList) {
+        this.booksList = booksList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -109,7 +128,7 @@ public class Categories implements Serializable {
 
     @Override
     public String toString() {
-        return "p.lodz.pl.library.entities.Categories[ idCategories=" + idCategories + " ]";
+        return name;
     }
     
 }

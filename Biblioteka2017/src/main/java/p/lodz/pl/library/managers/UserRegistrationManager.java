@@ -8,6 +8,7 @@ package p.lodz.pl.library.managers;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import p.lodz.pl.library.entities.Role;
 import p.lodz.pl.library.entities.Users;
 import p.lodz.pl.library.utils.MD5Hash;
 
@@ -25,7 +26,9 @@ public class UserRegistrationManager implements UserRegistrationManagerLocal {
         String md5password = MD5Hash.md5(user.getPassword());
         user.setPassword(md5password);
         
-        user.setIdRole(2);
+        Role r = new Role();
+        r.setIdRole(2);
+        user.setIdRole(r);
         return user;
     }
     

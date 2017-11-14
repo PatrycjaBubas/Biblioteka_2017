@@ -32,7 +32,7 @@ public class CategoriesFacade extends AbstractFacade<Categories> implements Cate
 
     @Override
     public Object findByName(String category) {
-        Query q = em.createNamedQuery("Authors.findByName");
+        Query q = em.createNamedQuery("Categories.findByName");
         q.setParameter("name", category);
         try {
             return (Categories) q.getSingleResult();

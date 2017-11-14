@@ -13,28 +13,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Paweł Cała
+ * @author Lopez
  */
 @Entity
 @Table(name = "requests")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Requests.findAll", query = "SELECT r FROM Requests r"),
     @NamedQuery(name = "Requests.findByIdRequests", query = "SELECT r FROM Requests r WHERE r.idRequests = :idRequests"),
-    @NamedQuery(name = "Requests.findByIdUsers", query = "SELECT r FROM Requests r WHERE r.idUsers = :idUsers"),
-    @NamedQuery(name = "Requests.findByIdBooks", query = "SELECT r FROM Requests r WHERE r.idBooks = :idBooks"),
     @NamedQuery(name = "Requests.findByBorrowDate", query = "SELECT r FROM Requests r WHERE r.borrowDate = :borrowDate"),
     @NamedQuery(name = "Requests.findByReturnDate", query = "SELECT r FROM Requests r WHERE r.returnDate = :returnDate"),
     @NamedQuery(name = "Requests.findByArchival", query = "SELECT r FROM Requests r WHERE r.archival = :archival")})
 public class Requests implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     
     @Id
@@ -42,16 +45,6 @@ public class Requests implements Serializable {
     @Basic(optional = false)
     @Column(name = "idRequests")
     private Integer idRequests;
-    
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idUsers")
-    private int idUsers;
-    
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idBooks")
-    private int idBooks;
     
     @Basic(optional = false)
     @NotNull
@@ -67,6 +60,14 @@ public class Requests implements Serializable {
     @NotNull
     @Column(name = "archival")
     private boolean archival;
+    
+    @JoinColumn(name = "idBooks", referencedColumnName = "idBooks")
+    @ManyToOne(optional = false)
+    private Books idBooks;
+    
+    @JoinColumn(name = "idUsers", referencedColumnName = "idUsers")
+    @ManyToOne(optional = false)
+    private Users idUsers;
 
     public Requests() {
     }
@@ -75,10 +76,8 @@ public class Requests implements Serializable {
         this.idRequests = idRequests;
     }
 
-    public Requests(Integer idRequests, int idUsers, int idBooks, Date borrowDate, boolean archival) {
+    public Requests(Integer idRequests, Date borrowDate, boolean archival) {
         this.idRequests = idRequests;
-        this.idUsers = idUsers;
-        this.idBooks = idBooks;
         this.borrowDate = borrowDate;
         this.archival = archival;
     }
@@ -89,22 +88,6 @@ public class Requests implements Serializable {
 
     public void setIdRequests(Integer idRequests) {
         this.idRequests = idRequests;
-    }
-
-    public int getIdUsers() {
-        return idUsers;
-    }
-
-    public void setIdUsers(int idUsers) {
-        this.idUsers = idUsers;
-    }
-
-    public int getIdBooks() {
-        return idBooks;
-    }
-
-    public void setIdBooks(int idBooks) {
-        this.idBooks = idBooks;
     }
 
     public Date getBorrowDate() {
@@ -129,6 +112,22 @@ public class Requests implements Serializable {
 
     public void setArchival(boolean archival) {
         this.archival = archival;
+    }
+
+    public Books getIdBooks() {
+        return idBooks;
+    }
+
+    public void setIdBooks(Books idBooks) {
+        this.idBooks = idBooks;
+    }
+
+    public Users getIdUsers() {
+        return idUsers;
+    }
+
+    public void setIdUsers(Users idUsers) {
+        this.idUsers = idUsers;
     }
 
     @Override
