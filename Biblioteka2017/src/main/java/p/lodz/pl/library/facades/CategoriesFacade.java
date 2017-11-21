@@ -7,7 +7,9 @@ package p.lodz.pl.library.facades;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import p.lodz.pl.library.entities.Categories;
 
 /**
@@ -26,6 +28,17 @@ public class CategoriesFacade extends AbstractFacade<Categories> implements Cate
 
     public CategoriesFacade() {
         super(Categories.class);
+    }
+
+    @Override
+    public Object findByName(String category) {
+        Query q = em.createNamedQuery("Categories.findByName");
+        q.setParameter("name", category);
+        try {
+            return (Categories) q.getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        }
     }
     
 }

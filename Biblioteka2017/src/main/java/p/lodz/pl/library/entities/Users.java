@@ -6,24 +6,32 @@
 package p.lodz.pl.library.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Paweł Cała
+ * @author Lopez
  */
 @Entity
 @Table(name = "users")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
     @NamedQuery(name = "Users.findByIdUsers", query = "SELECT u FROM Users u WHERE u.idUsers = :idUsers"),
@@ -31,9 +39,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),
     @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email"),
     @NamedQuery(name = "Users.findByName", query = "SELECT u FROM Users u WHERE u.name = :name"),
-    @NamedQuery(name = "Users.findBySurname", query = "SELECT u FROM Users u WHERE u.surname = :surname"),
-    @NamedQuery(name = "Users.findByIdRole", query = "SELECT u FROM Users u WHERE u.idRole = :idRole")})
+    @NamedQuery(name = "Users.findBySurname", query = "SELECT u FROM Users u WHERE u.surname = :surname")})
 public class Users implements Serializable {
+    
     private static final long serialVersionUID = 1L;
     
     @Id
@@ -53,7 +61,8 @@ public class Users implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "password")
     private String password;
-    
+   
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
@@ -72,10 +81,12 @@ public class Users implements Serializable {
     @Column(name = "surname")
     private String surname;
     
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "idRole")
-    private int idRole;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idUsers")
+    private List<Requests> requestsList;
+    
+    @JoinColumn(name = "idRole", referencedColumnName = "idRole")
+    @ManyToOne(optional = false)
+    private Role idRole;
 
     public Users() {
     }
@@ -84,14 +95,13 @@ public class Users implements Serializable {
         this.idUsers = idUsers;
     }
 
-    public Users(Integer idUsers, String login, String password, String email, String name, String surname, int idRole) {
+    public Users(Integer idUsers, String login, String password, String email, String name, String surname) {
         this.idUsers = idUsers;
         this.login = login;
         this.password = password;
         this.email = email;
         this.name = name;
         this.surname = surname;
-        this.idRole = idRole;
     }
 
     public Integer getIdUsers() {
@@ -142,11 +152,20 @@ public class Users implements Serializable {
         this.surname = surname;
     }
 
-    public int getIdRole() {
+    @XmlTransient
+    public List<Requests> getRequestsList() {
+        return requestsList;
+    }
+
+    public void setRequestsList(List<Requests> requestsList) {
+        this.requestsList = requestsList;
+    }
+
+    public Role getIdRole() {
         return idRole;
     }
 
-    public void setIdRole(int idRole) {
+    public void setIdRole(Role idRole) {
         this.idRole = idRole;
     }
 

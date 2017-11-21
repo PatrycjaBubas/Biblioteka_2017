@@ -7,7 +7,9 @@ package p.lodz.pl.library.facades;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import p.lodz.pl.library.entities.Authors;
 
 /**
@@ -26,6 +28,17 @@ public class AuthorsFacade extends AbstractFacade<Authors> implements AuthorsFac
 
     public AuthorsFacade() {
         super(Authors.class);
+    }
+
+    @Override
+    public Object findByName(String author) {
+        Query q = em.createNamedQuery("Authors.findByName");
+        q.setParameter("name", author);
+        try {
+            return (Authors) q.getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        }
     }
     
 }

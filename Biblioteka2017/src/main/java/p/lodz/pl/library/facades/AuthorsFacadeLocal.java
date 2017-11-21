@@ -29,5 +29,7 @@ public interface AuthorsFacadeLocal {
     List<Authors> findRange(int[] range);
 
     int count();
+
+    public Object findByName(String name);
     
 }
