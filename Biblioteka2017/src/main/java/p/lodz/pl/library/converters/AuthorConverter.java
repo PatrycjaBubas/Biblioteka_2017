@@ -26,6 +26,8 @@ public class AuthorConverter implements Converter {
     
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
+        String[] parts = value.split(" ");
+        value = (parts[0].trim());
         return mOBEndpoint.getAuthorByName(value);
     }
 

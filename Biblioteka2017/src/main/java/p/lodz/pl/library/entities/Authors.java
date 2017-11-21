@@ -147,8 +147,6 @@ public class Authors implements Serializable {
 
     @Override
     public String toString() {
-        //return "p.lodz.pl.library.entities.Authors[ idAuthors=" + idAuthors + " ]";
-        //String fullname = ;
         return name + " " + surname;
     }
     
