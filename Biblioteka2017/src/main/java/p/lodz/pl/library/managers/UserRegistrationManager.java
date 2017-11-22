@@ -26,8 +26,9 @@ public class UserRegistrationManager implements UserRegistrationManagerLocal {
         String md5password = MD5Hash.md5(user.getPassword());
         user.setPassword(md5password);
         
+        //brzydkie tymczasowe rozwiązanie
         Role r = new Role();
-        r.setIdRole(2);
+        r.setIdRole(1);
         user.setIdRole(r);
         return user;
     }
