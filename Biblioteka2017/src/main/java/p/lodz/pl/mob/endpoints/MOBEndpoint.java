@@ -58,5 +58,15 @@ public class MOBEndpoint implements MOBEndpointLocal {
     public Object getAuthorByName(String name) {
         return authorFacade.findByName(name);
     }
+
+    @Override
+    public void saveEditedBook(Books book) {
+        bookFacade.edit(book);
+    }
+
+    @Override
+    public Books getBookToEdit(Books book) {
+        return bookFacade.find(book.getIdBooks());
+    }
     
 }

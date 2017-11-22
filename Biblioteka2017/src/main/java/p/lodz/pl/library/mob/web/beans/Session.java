@@ -24,6 +24,8 @@ public class Session implements Serializable {
     @EJB
     private MOBEndpointLocal mOBEndpoint;
     
+    private Books currentlyEditedBook;
+    
     public void addBook(Books book) {
         mOBEndpoint.addBook(book);
     }
@@ -34,6 +36,18 @@ public class Session implements Serializable {
 
     public List<Authors> getAllAuthors() {
         return mOBEndpoint.getAllAuthors();
+    }
+
+    public Books getCurrentlyEditedBook() {
+        return currentlyEditedBook;
+    }
+
+    public void saveEditedBook(Books book) {
+        mOBEndpoint.saveEditedBook(book);
+    }
+
+    public void getBookToEdit(Books book) {
+        currentlyEditedBook = mOBEndpoint.getBookToEdit(book);
     }
     
 }

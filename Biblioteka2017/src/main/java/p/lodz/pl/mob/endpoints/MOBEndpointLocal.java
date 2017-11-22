@@ -25,5 +25,9 @@ public interface MOBEndpointLocal {
     public Object getCategoryByName(String value);
 
     public Object getAuthorByName(String value);
+
+    public void saveEditedBook(Books book);
+
+    public Books getBookToEdit(Books book);
     
 }
