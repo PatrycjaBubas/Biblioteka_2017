@@ -24,6 +24,7 @@
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
+    
     <!--    kontrola dostepu dla stron logowania-->
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
@@ -41,6 +42,7 @@
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
+    
     <!--    kontrola dostepu dla zasobow administratora-->
     <security-constraint>
         <display-name>AdminConstr</display-name>
@@ -58,6 +60,25 @@
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
     </security-constraint>
+    
+    <!--    kontrola dostepu dla zasobow czytelnika-->
+    <security-constraint>
+        <display-name>ReaderConstr</display-name>
+        <web-resource-collection>
+            <web-resource-name>Reader pages</web-resource-name>
+            <description/>
+            <url-pattern>/reader/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>READER</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>bibliotekarealm</realm-name>
@@ -66,6 +87,7 @@
             <form-error-page>/login/error.html</form-error-page>
         </form-login-config>
     </login-config>
+    
     <security-role>
         <description/>
         <role-name>ADMIN</role-name>
@@ -78,4 +100,13 @@
         <description/>
         <role-name>LIBRARIAN</role-name>
     </security-role>
+    
+    <context-param>
+        <param-name>adminRole</param-name>
+        <param-value>ADMIN</param-value>
+    </context-param>
+    <context-param>
+        <param-name>readerRole</param-name>
+        <param-value>READER</param-value>
+    </context-param>
 </web-app>
