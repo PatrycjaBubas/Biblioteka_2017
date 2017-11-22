@@ -8,14 +8,11 @@
 
     <h:form>
         <ul>   
-            <li><h:commandLink value="Strona główna" action="home" /></li>
+            <li><h:commandLink value="Strona główna" action="home" /></li><br/>
+            
             <h:panelGroup rendered="#{!roleUtils.accountIsAuthorised()}">
-                <li><h:commandLink value="Zaloguj" action="login" /><br /></li>
-                <li><h:commandLink value="Rejestracja" action="registerAccount"/><br /></li>
-            </h:panelGroup>
-
-            <h:panelGroup rendered="#{roleUtils.accountIsAuthorised()}">
-                <li><h:commandLink value="Lista książek" action="bookList" /></li><br/>
+                <li><h:commandLink value="Zaloguj" action="login" /></li>
+                <li><h:commandLink value="Rejestracja" action="registerAccount"/></li><br/><br/>
             </h:panelGroup>
 
             <h:panelGroup rendered="#{roleUtils.accountIsAdministrator()}">
@@ -26,6 +23,10 @@
                 <li><h:commandLink  value="Dodaj gatunek" action="addGenre" /></li>
                 <li><h:commandLink  value="Dodaj autora" action="addWriter" /></li>
                 <li><h:commandLink  value="Dodaj książkę" action="addBook" /></li><br/>
+            </h:panelGroup>
+            
+            <h:panelGroup rendered="#{roleUtils.accountIsAuthorised()}">
+                <li><h:commandLink value="Lista książek" action="bookList" /></li><br/>
             </h:panelGroup>
 
             <h:panelGroup rendered="#{roleUtils.accountIsReader()}">

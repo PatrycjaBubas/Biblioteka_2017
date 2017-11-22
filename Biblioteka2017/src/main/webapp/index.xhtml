@@ -8,7 +8,7 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="top">
-        <p>${txt.main}: ${txt.welcome}</p>
+        <p>Strona główna: Witaj!</p>
         <ui:include src="/templates/header.xhtml" /> 
     </ui:define>
 
@@ -18,11 +18,11 @@
 
     <ui:define name="content">
         <h:form id="adminContent" rendered="#{roleUtils.accountIsAdministrator()}">
-            ${txt.helloadmin}
+            Witaj Admin!
         </h:form>
 
         <h:form id="customerContent" rendered="#{roleUtils.accountIsReader()}">
-            ${txt.helloreader}
+            Witaj Czytelniku!
         </h:form>
     </ui:define>
 
