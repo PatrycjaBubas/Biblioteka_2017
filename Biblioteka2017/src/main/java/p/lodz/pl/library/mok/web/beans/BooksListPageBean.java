@@ -40,18 +40,18 @@ public class BooksListPageBean implements Serializable{
     public BooksListPageBean() {
     }
     
-    public List<BookModel> getResulBooksList(){
+    public List<Books> getResulBooksList(){
         
-        List<BookModel> resulBooksList = new ArrayList<BookModel>();
+        //List<BookModel> resulBooksList = new ArrayList<BookModel>();
         List<Books> books = new ArrayList<Books>();
         books = booksFacade.findAll();
         
-        for(Books b : books)
-        {
-            resulBooksList.add(new BookModel(authorsFacade.find(b.getIdAuthors()).getName() + " " + authorsFacade.find(b.getIdAuthors()).getSurname(), categoriesFacade.find(b.getIdCategories()).getName(),b));   
-        }
+//        for(Books b : books)
+//        {
+//            resulBooksList.add(new BookModel(authorsFacade.find(b.getIdAuthors()).getName() + " " + authorsFacade.find(b.getIdAuthors()).getSurname(), categoriesFacade.find(b.getIdCategories()).getName(),b));   
+//        }
         
-        return resulBooksList;
+        return books;
         
     }
     
