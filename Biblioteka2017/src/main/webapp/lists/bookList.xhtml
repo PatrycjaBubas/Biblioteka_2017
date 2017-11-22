@@ -20,28 +20,28 @@
 
     <ui:define name="content">
         <h:form id="dataTableForm">
-           <p:dataTable var="resulBook" value="#{booksListPageBean.resulBooksList}" widgetVar="booksTable">
+            <p:dataTable var="resulBook" value="#{booksListPageBean.resulBooksList}" widgetVar="booksTable">
                
                <p:column  headerText="Tytuł"  style="text-align: center" >
-                    <h:outputText value="#{resulBook.book.title}" />
+                    <h:outputText value="#{resulBook.title}" />
                </p:column>
                
                <p:column  headerText="Autor"  style="text-align: center" >
-                    <h:outputText value="#{resulBook.authorName}" />
-                    <!--&nbsp;
-                    <h:outputText value="#{book.idWriter.surname}" />-->
+                   <h:outputText value="#{resulBook.idAuthors.name}" />
+                    &nbsp;
+                    <h:outputText value="#{resulBook.idAuthors.surname}" />
                </p:column>
                
                <p:column   headerText="ISBN"  style="text-align: center" >
-                   <h:outputText value="#{resulBook.book.isbn}" />
+                   <h:outputText value="#{resulBook.isbn}" />
                </p:column>
                
                <p:column  headerText="Gatunek"  style="text-align: center" >
-                    <h:outputText value="#{resulBook.cathegory}" />
+                   <h:outputText value="#{resulBook.idCategories.name}" />
                </p:column>
                
                <p:column  headerText="Data"  style="text-align: center" >
-                    <h:outputText value="#{resulBook.book.date}" />
+                    <h:outputText value="#{resulBook.date}" />
                </p:column>
            
                <!--<p:column id="actions" headerText="Akcje" style="text-align: center" >
