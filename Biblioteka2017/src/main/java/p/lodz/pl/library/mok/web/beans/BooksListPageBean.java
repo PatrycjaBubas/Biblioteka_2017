@@ -8,13 +8,18 @@ package p.lodz.pl.library.mok.web.beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.model.DataModel;
+import javax.faces.model.ListDataModel;
+import javax.inject.Inject;
 import p.lodz.pl.library.entities.Books;
 import p.lodz.pl.library.facades.AuthorsFacadeLocal;
 import p.lodz.pl.library.facades.BooksFacadeLocal;
 import p.lodz.pl.library.facades.CategoriesFacadeLocal;
+import p.lodz.pl.library.mob.web.beans.Session;
 import p.lodz.pl.library.models.BookModel;
 
 /**
@@ -28,11 +33,20 @@ public class BooksListPageBean implements Serializable{
     @EJB
     private BooksFacadeLocal booksFacade;
     
-    @EJB
-    private AuthorsFacadeLocal authorsFacade;
+    @Inject
+    private Session session;
     
-    @EJB
-    private CategoriesFacadeLocal categoriesFacade;
+    private DataModel<Books> booksDataModel;
+
+    public DataModel<Books> getBooksDataModel() {
+        return booksDataModel;
+    }
+
+    public void setBooksDataModel(DataModel<Books> booksDataModel) {
+        this.booksDataModel = booksDataModel;
+    }
+    
+    
 
     /**
      * Creates a new instance of BooksListPageBean
@@ -40,19 +54,15 @@ public class BooksListPageBean implements Serializable{
     public BooksListPageBean() {
     }
     
-    public List<Books> getResulBooksList(){
+    @PostConstruct
+    public void getResulBooksList(){
+        booksDataModel = new ListDataModel(booksFacade.findAll());
         
-        //List<BookModel> resulBooksList = new ArrayList<BookModel>();
-        List<Books> books = new ArrayList<Books>();
-        books = booksFacade.findAll();
-        
-//        for(Books b : books)
-//        {
-//            resulBooksList.add(new BookModel(authorsFacade.find(b.getIdAuthors()).getName() + " " + authorsFacade.find(b.getIdAuthors()).getSurname(), categoriesFacade.find(b.getIdCategories()).getName(),b));   
-//        }
-        
-        return books;
-        
+    }
+    
+    public String editBook() {
+        session.getBookToEdit(booksDataModel.getRowData());
+        return "editBook";
     }
     
 }

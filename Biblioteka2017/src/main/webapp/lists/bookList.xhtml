@@ -20,7 +20,7 @@
 
     <ui:define name="content">
         <h:form id="dataTableForm">
-            <p:dataTable var="resulBook" value="#{booksListPageBean.resulBooksList}" widgetVar="booksTable">
+            <p:dataTable var="resulBook" value="#{booksListPageBean.booksDataModel}" widgetVar="booksTable">
                
                <p:column  headerText="Tytuł"  style="text-align: center" >
                     <h:outputText value="#{resulBook.title}" />
@@ -44,9 +44,9 @@
                     <h:outputText value="#{resulBook.date}" />
                </p:column>
            
-               <!--<p:column id="actions" headerText="Akcje" style="text-align: center" >
-                   <p:commandButton action="#{bookListPageBean.viewCopyList()}" value="#{txt.showcopies}" />
-               </p:column>-->
+               <p:column id="actions" headerText="Akcje" style="text-align: center" >
+                   <p:commandButton action="#{booksListPageBean.editBook()}" value="Edytuj książkę" />
+               </p:column>
            
            </p:dataTable>
             
