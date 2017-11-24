@@ -30,4 +30,6 @@ public interface MOBEndpointLocal {
 
     public Books getBookToEdit(Books book);
     
+    public void returnBook(Books bookToReturn);
+    
 }

@@ -69,4 +69,10 @@ public class MOBEndpoint implements MOBEndpointLocal {
         return bookFacade.find(book.getIdBooks());
     }
     
+    @Override
+    public void returnBook(Books bookToReturn) {
+        bookToReturn.setIsBorrowed(false);
+        bookFacade.edit(bookToReturn);
+    }
+    
 }

@@ -26,6 +26,8 @@ public class Session implements Serializable {
     
     private Books currentlyEditedBook;
     
+    private Books currentBook;
+    
     public void addBook(Books book) {
         mOBEndpoint.addBook(book);
     }
@@ -48,6 +50,10 @@ public class Session implements Serializable {
 
     public void getBookToEdit(Books book) {
         currentlyEditedBook = mOBEndpoint.getBookToEdit(book);
+    }
+    
+    public void returnBook(Books bookToReturn) {
+        mOBEndpoint.returnBook(bookToReturn);
     }
     
 }

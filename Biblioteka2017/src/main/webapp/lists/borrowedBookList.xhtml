@@ -40,7 +40,13 @@
                
                <p:column  headerText="Czy zwrócono"  style="text-align: center" >
                    <h:outputText value="#{borrowedBook.returned}" />
-               </p:column>           
+               </p:column>        
+               
+               <p:column id="actions" headerText="Akcje" style="text-align: center" >                   
+                   <h:panelGroup rendered="#{roleUtils.accountIsReader()}">
+                   <p:commandButton action="#{booksListPageBean.editBook()}" value="Oddaj książkę" />
+                   </h:panelGroup>
+               </p:column>
            </p:dataTable>
             
         </h:form>

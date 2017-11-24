@@ -68,7 +68,11 @@ public class Books implements Serializable {
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
     private Date date;
-    
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "is_borrowed")
+    private boolean isBorrowed;
+
     @JoinColumn(name = "idCategories", referencedColumnName = "idCategories")
     @ManyToOne(optional = false)
     private Categories idCategories;
@@ -87,11 +91,12 @@ public class Books implements Serializable {
         this.idBooks = idBooks;
     }
 
-    public Books(Integer idBooks, String title, String isbn, Date date) {
+    public Books(Integer idBooks, String title, String isbn, Date date, boolean isBorrowed) {
         this.idBooks = idBooks;
         this.title = title;
         this.isbn = isbn;
         this.date = date;
+        this.isBorrowed = isBorrowed;
     }
 
     public Integer getIdBooks() {
@@ -140,6 +145,14 @@ public class Books implements Serializable {
 
     public void setIdAuthors(Authors idAuthors) {
         this.idAuthors = idAuthors;
+    }
+    
+    public boolean isIsBorrowed() {
+        return isBorrowed;
+    }
+
+    public void setIsBorrowed(boolean isBorrowed) {
+        this.isBorrowed = isBorrowed;
     }
 
     @XmlTransient

@@ -11,11 +11,14 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.model.DataModel;
+import javax.inject.Inject;
 import p.lodz.pl.library.entities.Requests;
-import p.lodz.pl.library.entities.Users;
+import p.lodz.pl.library.entities.Books;
 import p.lodz.pl.library.facades.BooksFacadeLocal;
 import p.lodz.pl.library.facades.RequestsFacadeLocal;
 import p.lodz.pl.library.facades.UsersFacadeLocal;
+import p.lodz.pl.library.mob.web.beans.Session;
 import p.lodz.pl.library.models.BorrowedBookModel;
 
 /**
@@ -25,6 +28,12 @@ import p.lodz.pl.library.models.BorrowedBookModel;
 @Named(value = "borrowedBooksListPageBean")
 @Dependent
 public class BorrowedBooksListPageBean implements Serializable {
+    
+    @Inject
+    private Session session;
+    
+    private DataModel<Books> booksDataModel;
+    
 
     @EJB
     private RequestsFacadeLocal requestsFacade;
@@ -57,6 +66,10 @@ public class BorrowedBooksListPageBean implements Serializable {
         }
         
         return borrowedBooks;
+    }
+    
+    public void returnBook() {        
+        session.returnBook(booksDataModel.getRowData());
     }
     
 }
