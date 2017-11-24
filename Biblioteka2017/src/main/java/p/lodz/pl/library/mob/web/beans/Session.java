@@ -26,6 +26,10 @@ public class Session implements Serializable {
     
     private Books currentlyEditedBook;
     
+    private Books currentlyBorrowedBook;
+    
+    private Books currentlyReturnedBook;
+    
     private Books currentBook;
     
     public void addBook(Books book) {
@@ -52,8 +56,28 @@ public class Session implements Serializable {
         currentlyEditedBook = mOBEndpoint.getBookToEdit(book);
     }
     
-    public void returnBook(Books bookToReturn) {
-        mOBEndpoint.returnBook(bookToReturn);
+    public Books getCurrentlyBorrowedBook() {
+        return currentlyBorrowedBook;
+    }
+
+    public void saveBorrowedBook(Books book) {
+        mOBEndpoint.saveBorrowedBook(book);
+    }
+
+    public void getBookToBorrow(Books book) {
+        currentlyBorrowedBook = mOBEndpoint.getBookToBorrow(book);
+    }
+    
+    public Books getCurrentlyReturnedBook() {
+        return currentlyReturnedBook;
+    }
+
+    public void saveReturnedBook(Books book) {
+        mOBEndpoint.saveReturnedBook(book);
+    }
+
+    public void getBookToReturn(Books book) {
+        currentlyReturnedBook = mOBEndpoint.getBookToReturn(book);
     }
     
 }

@@ -30,6 +30,12 @@ public interface MOBEndpointLocal {
 
     public Books getBookToEdit(Books book);
     
-    public void returnBook(Books bookToReturn);
+    public void saveBorrowedBook(Books book);
+
+    public Books getBookToBorrow(Books book);
+    
+    public void saveReturnedBook(Books book);
+
+    public Books getBookToReturn(Books book);
     
 }

@@ -27,5 +27,5 @@ public class BooksFacade extends AbstractFacade<Books> implements BooksFacadeLoc
     public BooksFacade() {
         super(Books.class);
     }
-    
+   
 }

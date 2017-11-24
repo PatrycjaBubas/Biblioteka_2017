@@ -32,7 +32,7 @@ public class BorrowedBooksListPageBean implements Serializable {
     @Inject
     private Session session;
     
-    private DataModel<Books> booksDataModel;
+    private Books book;
     
 
     @EJB
@@ -47,7 +47,7 @@ public class BorrowedBooksListPageBean implements Serializable {
      * Creates a new instance of BorrowedBooksListPageBean
      */
     
-    ;
+    private DataModel<Books> booksDataModel;
     
     public BorrowedBooksListPageBean() 
     {
@@ -68,8 +68,10 @@ public class BorrowedBooksListPageBean implements Serializable {
         return borrowedBooks;
     }
     
-    public void returnBook() {        
-        session.returnBook(booksDataModel.getRowData());
+    public String returnBook() {        
+        session.getBookToReturn(booksDataModel.getRowData());
+        session.saveBorrowedBook(book);
+        return "returnBook";
     }
     
 }

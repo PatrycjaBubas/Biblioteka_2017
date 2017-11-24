@@ -74,4 +74,18 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>successAfterBookBorrowed</from-outcome>
+            <to-view-id>/authorized/successAfterBookBorrowed.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>successAfterBookReturned</from-outcome>
+            <to-view-id>/authorized/successAfterBookReturned.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

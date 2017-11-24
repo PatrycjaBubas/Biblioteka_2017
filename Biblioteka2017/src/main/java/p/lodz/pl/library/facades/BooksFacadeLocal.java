@@ -22,6 +22,10 @@ public interface BooksFacadeLocal {
 
     void remove(Books books);
 
+    void borrow(Books books);
+    
+    void returned(Books books);
+
     Books find(Object id);
 
     List<Books> findAll();

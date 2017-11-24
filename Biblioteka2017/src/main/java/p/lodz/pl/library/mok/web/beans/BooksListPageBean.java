@@ -65,4 +65,9 @@ public class BooksListPageBean implements Serializable{
         return "editBook";
     }
     
+    public String borrowBook() {        
+        session.getBookToBorrow(booksDataModel.getRowData());
+        return "borrowBook";
+    }
+    
 }
