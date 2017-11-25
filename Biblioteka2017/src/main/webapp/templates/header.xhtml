@@ -6,8 +6,9 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:p="http://primefaces.org/ui">
 
-    <div align="right">
-        Zalogowany <h:outputText value="#{request.remoteUser}" />
-
-    </div>
+    <h:panelGroup rendered="#{roleUtils.accountIsAuthorised()}">
+        <div align="right">
+            Zalogowany <h:outputText value="#{request.remoteUser}" />
+        </div>
+    </h:panelGroup>
 </ui:composition>

@@ -9,17 +9,20 @@
 
     <div>
         <h:form>
-            Biblioteka 2017.
+            Biblioteka 2017
             <br/>
-            <strong>
-                Zalogowano jako: 
-                <c:if test="#{roleUtils.accountIsAdministrator() == true}">
-                    <span style="text-decoration:underline;">Administrator</span>       
-                </c:if>
-                <c:if test="#{roleUtils.accountIsReader() == true}">
-                    <span style="text-decoration:underline;">Czytelnik</span>       
-                </c:if>
-            </strong>
+            <h:panelGroup rendered="#{roleUtils.accountIsAuthorised()}">
+                <strong>
+                    Zalogowano jako: 
+                    <c:if test="#{roleUtils.accountIsAdministrator() == true}">
+                        <span style="text-decoration:underline;">Administrator</span>       
+                    </c:if>
+                    <c:if test="#{roleUtils.accountIsReader() == true}">
+                        <span style="text-decoration:underline;">Czytelnik</span>       
+                    </c:if>
+                </strong>
+            </h:panelGroup>
+
         </h:form>
     </div>
 </ui:composition>

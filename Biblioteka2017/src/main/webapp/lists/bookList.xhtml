@@ -43,9 +43,15 @@
                <p:column  headerText="Data"  style="text-align: center" >
                     <h:outputText value="#{resulBook.date}" />
                </p:column>
-           
+                
                <p:column id="actions" headerText="Akcje" style="text-align: center" >
+                   <h:panelGroup rendered="#{roleUtils.accountIsAdministrator()}">
                    <p:commandButton action="#{booksListPageBean.editBook()}" value="Edytuj książkę" />
+                   </h:panelGroup>
+                   
+                   <h:panelGroup rendered="#{roleUtils.accountIsReader()}">
+                   <p:commandButton action="#{booksListPageBean.editBook()}" value="Wypożycz książkę" />
+                   </h:panelGroup>
                </p:column>
            
            </p:dataTable>
