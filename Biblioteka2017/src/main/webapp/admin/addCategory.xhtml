@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/templates/mainTemplate.xhtml">
+
+    <ui:define name="top">
+        <p>Strona Główna / Dodawanie Kategorii </p>
+        <ui:include src="/templates/header.xhtml" /> 
+    </ui:define>
+
+    <ui:define name="left">
+        <ui:include src="/templates/menu.xhtml" />
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <h:panelGrid id="matchGrid" columns="2" cellpadding="5">
+
+                <h:outputLabel for="inputName" value="Nazwa: *" />
+                <p:inputText id="inputTitle" value="#{addCategoryPageBean.category.name}" required="true">
+                    <f:validateLength for="inputName" maximum="200" minimum="1" />
+                    <f:validateRegex for="inputName" pattern="[a-zA-Z0-9]+" />            
+                </p:inputText>
+                
+                <h:outputLabel for="inputDescribtion" value="Opis: *" />
+                <p:inputText id="inputISBN" value="#{addCategoryPageBean.category.description}" required="true">
+                    <f:validateLength for="inputISBN" maximum="200" minimum="13" />
+                    <f:validateRegex for="inputISBN" pattern="[0-9]+" />            
+                </p:inputText>
+                      
+                <p:commandButton update="matchGrid" action="#{addCategoryPageBean.addCategory()}" value="Dodaj" />
+                <p:commandButton value="Powrót" action="home" immediate="true" />
+            </h:panelGrid>
+        </h:form>
+        <p:messages autoUpdate="true" class="error"/>
+    </ui:define>
+
+    <ui:define name="footer">
+        <ui:include src="/templates/footer.xhtml" />
+    </ui:define>
+</ui:composition>
