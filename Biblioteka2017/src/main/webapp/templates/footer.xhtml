@@ -20,6 +20,9 @@
                     <c:if test="#{roleUtils.accountIsReader() == true}">
                         <span style="text-decoration:underline;">Czytelnik</span>       
                     </c:if>
+                    <c:if test="#{roleUtils.accountIsLibrarian() == true}">
+                        <span style="text-decoration:underline;">Bibliotekarz</span>       
+                    </c:if>
                 </strong>
             </h:panelGroup>
 
