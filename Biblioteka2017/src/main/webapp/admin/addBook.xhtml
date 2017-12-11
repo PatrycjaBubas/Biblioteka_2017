@@ -45,11 +45,8 @@
                     <f:selectItems value="#{addBookPageBean.categories}" />
                 </p:selectOneMenu>
                 
-                <h:outputLabel for="date" value="Data urodzenia: " />                 
-                <p:inputText id="date" value="#{addBookPageBean.book.date}" required="true" >
-                    <f:convertDateTime pattern="dd/MM/yyyy" />
-                </p:inputText>
-<!--                <p:message for="date" />-->
+                <h:outputLabel for="date" value="Data wydania: " /> 
+                <p:calendar id="date" value="#{addBookPageBean.book.date}" pattern="dd-MM-yyyy"/>
                 
                 <p:commandButton update="matchGrid" action="#{addBookPageBean.addBook()}" value="Dodaj" />
                 <p:commandButton value="Powrót" action="home" immediate="true" />
