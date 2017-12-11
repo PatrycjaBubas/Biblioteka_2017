@@ -41,7 +41,9 @@
                </p:column>
                
                <p:column  headerText="Data"  style="text-align: center" >
-                    <h:outputText value="#{resulBook.date}" />
+                    <h:outputText value="#{resulBook.date}" >
+                        <f:convertDateTime pattern="dd-MM-yyyy" />
+                    </h:outputText>
                </p:column>
                 
                <p:column id="actions" headerText="Akcje" style="text-align: center" >
