@@ -64,6 +64,7 @@ public class AddBookPageBean {
     }
     
     public String addBook() {
+        book.setIsBorrowed(false);
         session.addBook(book);
         return "successAfterBookAdded";
     }
