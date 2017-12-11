@@ -29,7 +29,8 @@ public class RoleUtils {
     public static boolean accountIsAuthorised() {
         String adminRole = FacesContext.getCurrentInstance().getExternalContext().getInitParameter("adminRole");
         String readerRole = FacesContext.getCurrentInstance().getExternalContext().getInitParameter("readerRole");
-        return isAccountInRole(adminRole) || isAccountInRole(readerRole);
+        String librarianRole = FacesContext.getCurrentInstance().getExternalContext().getInitParameter("librarianRole");
+        return isAccountInRole(adminRole) || isAccountInRole(readerRole) || isAccountInRole(librarianRole);
     }
     
     public static boolean accountIsAdministrator() {
@@ -39,6 +40,11 @@ public class RoleUtils {
     
     public static boolean accountIsReader() {
         String role = FacesContext.getCurrentInstance().getExternalContext().getInitParameter("readerRole");
+        return isAccountInRole(role);
+    }
+    
+    public static boolean accountIsLibrarian() {
+        String role = FacesContext.getCurrentInstance().getExternalContext().getInitParameter("librarianRole");
         return isAccountInRole(role);
     }
 }

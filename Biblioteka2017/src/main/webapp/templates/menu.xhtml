@@ -31,6 +31,13 @@
 
             <h:panelGroup rendered="#{roleUtils.accountIsReader()}">
                 <p:outputLabel value="Czytelnik" />
+                <li><h:commandLink value="Lista wypożyczonych książek" action="requestsList" /></li>                
+            </h:panelGroup>
+            <h:panelGroup rendered="#{roleUtils.accountIsLibrarian()}">
+                <p:outputLabel value="Biblotekarz" />
+                <li><h:commandLink  value="Dodaj gatunek" action="addGenre" /></li>
+                <li><h:commandLink  value="Dodaj autora" action="addWriter" /></li>
+                <li><h:commandLink  value="Dodaj książkę" action="addBook" /></li><br/>
                 <li><h:commandLink value="Lista wypożyczeń" action="requestsList" /></li>                
             </h:panelGroup>
         </ul>

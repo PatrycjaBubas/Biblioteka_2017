@@ -109,4 +109,8 @@
         <param-name>readerRole</param-name>
         <param-value>READER</param-value>
     </context-param>
+    <context-param>
+        <param-name>librarianRole</param-name>
+        <param-value>LIBRARIAN</param-value>
+    </context-param>
 </web-app>
