@@ -69,6 +69,11 @@ public class Books implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date date;
     
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "is_borrowed")
+    private boolean isBorrowed;
+    
     @JoinColumn(name = "idCategories", referencedColumnName = "idCategories")
     @ManyToOne(optional = false)
     private Categories idCategories;
@@ -124,6 +129,14 @@ public class Books implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+    
+    public boolean isIsBorrowed() {
+        return isBorrowed;
+    }
+
+    public void setIsBorrowed(boolean isBorrowed) {
+        this.isBorrowed = isBorrowed;
     }
 
     public Categories getIdCategories() {
