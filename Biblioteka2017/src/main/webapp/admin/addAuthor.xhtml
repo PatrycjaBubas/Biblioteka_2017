@@ -22,21 +22,19 @@
             <h:panelGrid id="matchGrid" columns="2" cellpadding="5">
 
                 <h:outputLabel for="inputName" value="Imię: *" />
-                <p:inputText id="inputName" value="#{addAuthorPageBean.author.name}" required="true">
+                <p:inputText id="inputName" value="#{addAuthorPageBean.name}" required="true">
                     <f:validateLength for="inputTitle" maximum="50" minimum="1" />
                     <f:validateRegex for="inputTitle" pattern="[a-zA-Z0-9]+" />            
                 </p:inputText>
                 
                 <h:outputLabel for="inputSurname" value="Nazwisko: *" />
-                <p:inputText id="inputSurname" value="#{addAuthorPageBean.author.surname}" required="true">
+                <p:inputText id="inputSurname" value="#{addAuthorPageBean.surname}" required="true">
                     <f:validateLength for="inputTitle" maximum="50" minimum="1" />
                     <f:validateRegex for="inputTitle" pattern="[a-zA-Z0-9]+" />            
                 </p:inputText>
                 
                 <h:outputLabel for="inputDate" value="Data Urodzenia: *" />
-                <p:inputText id="inputDate" value="#{addAuthorPageBean.author.dateOfBrith}" required="true">  
-                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                </p:inputText>
+                <p:calendar id="date" value="#{addAuthorPageBean.birthDate}" pattern="dd-MM-yyyy"/>
                 
                 <p:commandButton update="matchGrid" action="#{addAuthorPageBean.addAuthor()}" value="Dodaj" />
                 <p:commandButton value="Powrót" action="home" immediate="true" />

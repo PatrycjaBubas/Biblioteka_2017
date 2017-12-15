@@ -74,4 +74,18 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>addAuthor</from-outcome>
+            <to-view-id>/admin/addAuthor.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>successAfterAuthorAdded</from-outcome>
+            <to-view-id>/admin/successAfterAuthorAdded.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

@@ -68,5 +68,10 @@ public class MOBEndpoint implements MOBEndpointLocal {
     public Books getBookToEdit(Books book) {
         return bookFacade.find(book.getIdBooks());
     }
+
+    @Override
+    public void addAuthor(Authors author) {
+        authorFacade.create(author);
+    }
     
 }

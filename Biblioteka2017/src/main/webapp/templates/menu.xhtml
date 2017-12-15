@@ -21,7 +21,7 @@
                 <li><h:commandLink  value="Lista gatunków" action="genreList" /></li>
                 <li><h:commandLink  value="Lista autorów" action="writerList" /></li>-->
                 <li><h:commandLink  value="Dodaj gatunek" action="addGenre" /></li>
-                <li><h:commandLink  value="Dodaj autora" action="addWriter" /></li>
+                <li><h:commandLink  value="Dodaj autora" action="addAuthor" /></li>
                 <li><h:commandLink  value="Dodaj książkę" action="addBook" /></li><br/>
             </h:panelGroup>
             
@@ -36,7 +36,7 @@
             <h:panelGroup rendered="#{roleUtils.accountIsLibrarian()}">
                 <p:outputLabel value="Biblotekarz" />
                 <li><h:commandLink  value="Dodaj gatunek" action="addGenre" /></li>
-                <li><h:commandLink  value="Dodaj autora" action="addWriter" /></li>
+                <li><h:commandLink  value="Dodaj autora" action="addAuthor" /></li>
                 <li><h:commandLink  value="Dodaj książkę" action="addBook" /></li><br/>
                 <li><h:commandLink value="Lista wypożyczeń" action="requestsList" /></li>                
             </h:panelGroup>
