@@ -29,5 +29,7 @@ public interface MOBEndpointLocal {
     public void saveEditedBook(Books book);
 
     public Books getBookToEdit(Books book);
+
+    public void addAuthor(Authors author);
     
 }

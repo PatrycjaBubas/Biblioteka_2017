@@ -49,5 +49,9 @@ public class Session implements Serializable {
     public void getBookToEdit(Books book) {
         currentlyEditedBook = mOBEndpoint.getBookToEdit(book);
     }
+
+    public void addAuthor(Authors author) {
+        mOBEndpoint.addAuthor(author);
+    }
     
 }
