@@ -23,14 +23,14 @@
 
                 <h:outputLabel for="inputName" value="Imię: *" />
                 <p:inputText id="inputName" value="#{addAuthorPageBean.name}" required="true">
-                    <f:validateLength for="inputTitle" maximum="50" minimum="1" />
-                    <f:validateRegex for="inputTitle" pattern="[a-zA-Z0-9]+" />            
+                    <f:validateLength for="inputName" maximum="50" minimum="1" />
+                    <f:validateRegex for="inputName" pattern="[a-zA-Z0-9]+" />            
                 </p:inputText>
                 
                 <h:outputLabel for="inputSurname" value="Nazwisko: *" />
                 <p:inputText id="inputSurname" value="#{addAuthorPageBean.surname}" required="true">
-                    <f:validateLength for="inputTitle" maximum="50" minimum="1" />
-                    <f:validateRegex for="inputTitle" pattern="[a-zA-Z0-9]+" />            
+                    <f:validateLength for="inputSurname" maximum="50" minimum="1" />
+                    <f:validateRegex for="inputSurname" pattern="[a-zA-Z0-9]+" />            
                 </p:inputText>
                 
                 <h:outputLabel for="inputDate" value="Data Urodzenia: *" />

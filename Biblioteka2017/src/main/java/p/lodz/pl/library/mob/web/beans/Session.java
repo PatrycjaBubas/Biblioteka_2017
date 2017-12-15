@@ -53,5 +53,9 @@ public class Session implements Serializable {
     public void addAuthor(Authors author) {
         mOBEndpoint.addAuthor(author);
     }
+
+    public void addCategory(Categories category) {
+        mOBEndpoint.addCategory(category);
+    }
     
 }
