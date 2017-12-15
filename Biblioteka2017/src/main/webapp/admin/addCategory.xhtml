@@ -22,15 +22,14 @@
             <h:panelGrid id="matchGrid" columns="2" cellpadding="5">
 
                 <h:outputLabel for="inputName" value="Nazwa: *" />
-                <p:inputText id="inputTitle" value="#{addCategoryPageBean.category.name}" required="true">
+                <p:inputText id="inputTitle" value="#{addCategoryPageBean.name}" required="true">
                     <f:validateLength for="inputName" maximum="200" minimum="1" />
                     <f:validateRegex for="inputName" pattern="[a-zA-Z0-9]+" />            
                 </p:inputText>
                 
-                <h:outputLabel for="inputDescribtion" value="Opis: *" />
-                <p:inputText id="inputISBN" value="#{addCategoryPageBean.category.description}" required="true">
-                    <f:validateLength for="inputISBN" maximum="200" minimum="13" />
-                    <f:validateRegex for="inputISBN" pattern="[0-9]+" />            
+                <h:outputLabel for="inputDescription" value="Opis: *" />
+                <p:inputText id="inputISBN" value="#{addCategoryPageBean.description}" required="true">
+                    <f:validateLength for="inputDescription" maximum="200" minimum="1" />           
                 </p:inputText>
                       
                 <p:commandButton update="matchGrid" action="#{addCategoryPageBean.addCategory()}" value="Dodaj" />

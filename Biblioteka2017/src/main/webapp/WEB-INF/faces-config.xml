@@ -88,4 +88,18 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>addCategory</from-outcome>
+            <to-view-id>/admin/addCategory.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>successAfterCategoryAdded</from-outcome>
+            <to-view-id>/admin/successAfterCategoryAdded.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

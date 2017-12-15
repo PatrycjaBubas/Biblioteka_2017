@@ -31,5 +31,7 @@ public interface MOBEndpointLocal {
     public Books getBookToEdit(Books book);
 
     public void addAuthor(Authors author);
+
+    public void addCategory(Categories category);
     
 }

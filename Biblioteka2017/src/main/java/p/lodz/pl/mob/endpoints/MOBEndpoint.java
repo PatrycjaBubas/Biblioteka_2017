@@ -73,5 +73,10 @@ public class MOBEndpoint implements MOBEndpointLocal {
     public void addAuthor(Authors author) {
         authorFacade.create(author);
     }
+
+    @Override
+    public void addCategory(Categories category) {
+        categoryFacade.create(category);
+    }
     
 }
