@@ -7,6 +7,7 @@ package p.lodz.pl.library.mok.web.beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -16,6 +17,8 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 import p.lodz.pl.library.entities.Books;
+import p.lodz.pl.library.entities.Requests;
+import p.lodz.pl.library.entities.Users;
 import p.lodz.pl.library.facades.AuthorsFacadeLocal;
 import p.lodz.pl.library.facades.BooksFacadeLocal;
 import p.lodz.pl.library.facades.CategoriesFacadeLocal;
@@ -37,6 +40,8 @@ public class BooksListPageBean implements Serializable{
     private Session session;
     
     private DataModel<Books> booksDataModel;
+    
+    private final Requests request = new Requests();
 
     public DataModel<Books> getBooksDataModel() {
         return booksDataModel;
@@ -46,8 +51,6 @@ public class BooksListPageBean implements Serializable{
         this.booksDataModel = booksDataModel;
     }
     
-    
-
     /**
      * Creates a new instance of BooksListPageBean
      */
@@ -63,6 +66,23 @@ public class BooksListPageBean implements Serializable{
     public String editBook() {
         session.getBookToEdit(booksDataModel.getRowData());
         return "editBook";
+    }
+    
+    public String addRequest() {
+        
+        Books book = booksDataModel.getRowData();
+        
+        book.setIsBorrowed(true);
+        request.setIdBooks(book);
+        request.setBorrowDate(new Date(System.currentTimeMillis()));
+        request.setArchival(false);
+        
+        //Users u = session.getCurrentUsersAccount();
+        //request.setIdUsers(u);
+        
+        session.addRequest(request);
+        
+        return "successAfterRequestAdded";
     }
     
 }

@@ -41,7 +41,7 @@
                </p:column>
                
                <p:column  headerText="Data"  style="text-align: center" >
-                    <h:outputText value="#{resulBook.date}" >
+                   <h:outputText value="#{resulBook.date}" >
                         <f:convertDateTime pattern="dd-MM-yyyy" />
                     </h:outputText>
                </p:column>
@@ -52,7 +52,7 @@
                    </h:panelGroup>
                    
                    <h:panelGroup rendered="#{roleUtils.accountIsReader()}">
-                   <p:commandButton action="#{booksListPageBean.editBook()}" value="Wypożycz książkę" />
+                   <p:commandButton action="#{booksListPageBean.addRequest()}" value="Wypożycz książkę" />
                    </h:panelGroup>
                </p:column>
            

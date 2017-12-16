@@ -6,9 +6,12 @@
 package p.lodz.pl.mob.endpoints;
 
 import java.util.List;
+import javax.ws.rs.core.Request;
 import p.lodz.pl.library.entities.Authors;
 import p.lodz.pl.library.entities.Books;
 import p.lodz.pl.library.entities.Categories;
+import p.lodz.pl.library.entities.Requests;
+import p.lodz.pl.library.entities.Users;
 
 /**
  *
@@ -30,4 +33,7 @@ public interface MOBEndpointLocal {
 
     public Books getBookToEdit(Books book);
     
+    public Users getCurrentUsersAccount();
+    
+    public void addRequest(Requests request);
 }

@@ -30,4 +30,6 @@ public interface UsersFacadeLocal {
 
     int count();
     
+    Users findByLogin(String login);
+    
 }
