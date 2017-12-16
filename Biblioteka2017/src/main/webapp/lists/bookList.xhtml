@@ -47,7 +47,7 @@
                </p:column>
                 
                <p:column id="actions" headerText="Akcje" style="text-align: center" >
-                   <h:panelGroup rendered="#{roleUtils.accountIsAdministrator()}">
+                   <h:panelGroup rendered="#{roleUtils.accountIsEmployee()}">
                    <p:commandButton action="#{booksListPageBean.editBook()}" value="Edytuj książkę" />
                    </h:panelGroup>
                    

@@ -46,10 +46,7 @@
                 </p:selectOneMenu>
                 
                 <h:outputLabel for="date" value="Data urodzenia: " />                 
-                <p:inputText id="date" value="#{editBookPageBean.book.date}" required="true" >
-                    <f:convertDateTime pattern="dd/MM/yyyy" />
-                </p:inputText>
-<!--                <p:message for="date" />-->
+                <p:calendar id="date" value="#{editBookPageBean.book.date}" pattern="dd-MM-yyyy"/>
                 
                 <p:commandButton update="matchGrid" action="#{editBookPageBean.editBook()}" value="Edytuj" />
                 <p:commandButton value="Powrót" action="home" immediate="true" />
