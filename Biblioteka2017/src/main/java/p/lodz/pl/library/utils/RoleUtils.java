@@ -47,4 +47,10 @@ public class RoleUtils {
         String role = FacesContext.getCurrentInstance().getExternalContext().getInitParameter("librarianRole");
         return isAccountInRole(role);
     }
+    
+    public static boolean accountIsEmployee() {
+        String adminRole = FacesContext.getCurrentInstance().getExternalContext().getInitParameter("adminRole");
+        String librarianRole = FacesContext.getCurrentInstance().getExternalContext().getInitParameter("librarianRole");
+        return isAccountInRole(adminRole) || isAccountInRole(librarianRole);
+    }
 }
