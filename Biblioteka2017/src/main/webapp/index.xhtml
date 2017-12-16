@@ -21,8 +21,12 @@
             Witaj Admin!
         </h:form>
 
-        <h:form id="customerContent" rendered="#{roleUtils.accountIsReader()}">
+        <h:form id="readerContent" rendered="#{roleUtils.accountIsReader()}">
             Witaj Czytelniku!
+        </h:form>
+        
+        <h:form id="librarianContent" rendered="#{roleUtils.accountIsLibrarian()}">
+            Witaj Bibliotekarzu!
         </h:form>
     </ui:define>
 
