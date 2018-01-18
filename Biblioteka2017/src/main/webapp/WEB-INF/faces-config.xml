@@ -102,4 +102,18 @@
             <redirect />
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>requestConfirmation</from-outcome>
+            <to-view-id>/reader/requestConfirmation.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>successAfterRequestAdded</from-outcome>
+            <to-view-id>/reader/successAfterRequestAdded.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

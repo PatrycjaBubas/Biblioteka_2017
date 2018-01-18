@@ -7,7 +7,9 @@ package p.lodz.pl.library.facades;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import p.lodz.pl.library.entities.Users;
 
 /**
@@ -16,7 +18,7 @@ import p.lodz.pl.library.entities.Users;
  */
 @Stateless
 public class UsersFacade extends AbstractFacade<Users> implements UsersFacadeLocal {
-    @PersistenceContext(unitName = "com.zmzp_Biblioteka2017_war_1.0-SNAPSHOTPU")
+    @PersistenceContext //(unitName = "com.zmzp_Biblioteka2017_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
     @Override
@@ -26,6 +28,17 @@ public class UsersFacade extends AbstractFacade<Users> implements UsersFacadeLoc
 
     public UsersFacade() {
         super(Users.class);
+    }
+
+    @Override
+    public Users findByLogin(String aLogin) {
+        Query q = em.createNamedQuery("Users.findByLogin");
+        q.setParameter("login", aLogin);
+        try {
+            return (Users) q.getSingleResult();
+        } catch (NoResultException ex) {
+            return null;
+        }
     }
     
 }

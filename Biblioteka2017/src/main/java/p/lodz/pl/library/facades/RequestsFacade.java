@@ -16,7 +16,7 @@ import p.lodz.pl.library.entities.Requests;
  */
 @Stateless
 public class RequestsFacade extends AbstractFacade<Requests> implements RequestsFacadeLocal {
-    @PersistenceContext(unitName = "com.zmzp_Biblioteka2017_war_1.0-SNAPSHOTPU")
+    @PersistenceContext //(unitName = "com.zmzp_Biblioteka2017_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
     @Override

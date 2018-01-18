@@ -12,6 +12,9 @@ import javax.enterprise.context.SessionScoped;
 import p.lodz.pl.library.entities.Authors;
 import p.lodz.pl.library.entities.Books;
 import p.lodz.pl.library.entities.Categories;
+import p.lodz.pl.library.entities.Requests;
+import p.lodz.pl.library.entities.Users;
+import p.lodz.pl.library.facades.UsersFacade;
 import p.lodz.pl.mob.endpoints.MOBEndpointLocal;
 
 /**
@@ -25,6 +28,8 @@ public class Session implements Serializable {
     private MOBEndpointLocal mOBEndpoint;
     
     private Books currentlyEditedBook;
+    
+    private Books currentBook;
     
     public void addBook(Books book) {
         mOBEndpoint.addBook(book);
@@ -56,6 +61,22 @@ public class Session implements Serializable {
 
     public void addCategory(Categories category) {
         mOBEndpoint.addCategory(category);
+    }
+
+    public void getCurrentBook(Books book) {
+        this.currentBook = mOBEndpoint.getCurrentBook(book);
+    }
+    
+    public Books getCurrentlyUsedBook() {
+        return currentBook;
+    }
+
+    public Users getCurrentUsersAccount() {
+        return mOBEndpoint.getCurrentUsersAccount();
+    }
+
+    public void addRequest(Requests request) {
+        mOBEndpoint.addRequest(request);
     }
     
 }

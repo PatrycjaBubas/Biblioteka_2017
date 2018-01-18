@@ -9,6 +9,8 @@ import java.util.List;
 import p.lodz.pl.library.entities.Authors;
 import p.lodz.pl.library.entities.Books;
 import p.lodz.pl.library.entities.Categories;
+import p.lodz.pl.library.entities.Requests;
+import p.lodz.pl.library.entities.Users;
 
 /**
  *
@@ -33,5 +35,11 @@ public interface MOBEndpointLocal {
     public void addAuthor(Authors author);
 
     public void addCategory(Categories category);
+
+    public Books getCurrentBook(Books book);
+
+    public Users getCurrentUsersAccount();
+
+    public void addRequest(Requests request);
     
 }
