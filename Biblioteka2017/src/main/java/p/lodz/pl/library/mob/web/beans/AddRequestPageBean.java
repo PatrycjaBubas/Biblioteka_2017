@@ -37,6 +37,7 @@ public class AddRequestPageBean {
     public String addRequest() {
         book = session.getCurrentlyUsedBook();
         book.setIsBorrowed(true);
+        session.saveEditedBook(book);
         request.setIdBooks(book);
         request.setBorrowDate(new Date());
         request.setIdUsers(session.getCurrentUsersAccount());

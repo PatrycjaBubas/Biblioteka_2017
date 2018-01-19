@@ -51,7 +51,7 @@
                    <p:commandButton action="#{booksListPageBean.editBook()}" value="Edytuj książkę" />
                    </h:panelGroup>
                    
-                   <h:panelGroup rendered="#{roleUtils.accountIsReader()}">
+                   <h:panelGroup rendered="#{roleUtils.accountIsReader() and !resulBook.isBorrowed}">
                        <p:commandButton action="#{booksListPageBean.borrowBook()}" value="Wypożycz książkę" />
                    </h:panelGroup>
                </p:column>
